@@ -11,6 +11,28 @@ namespace BookStore.DAL
         static int BookId = 0;
         static Dictionary<int, Book> Books = new Dictionary<int, Book>();
 
+        static BookRepository()
+        {
+            var currentBookId = BookId++;
+            Books.Add(currentBookId, new Book {
+                    ID = currentBookId,
+                    Title = "Harry Potter And the Chamber of Secrets",
+                    Description = "Harry Potter And the Chamber of Secrets",
+                    Author = "J.K. Rowling",
+                    CoverImageUri = "https://upload.wikimedia.org/wikipedia/en/c/c0/Harry_Potter_and_the_Chamber_of_Secrets_movie.jpg",
+                    Price = 10M
+            });
+
+            currentBookId = BookId++;
+            Books.Add(currentBookId, new Book {
+                    ID = currentBookId,
+                    Title = "Harry Potter and The Order of The Phoenix",
+                    Description = "Harry Potter and The Order of The Phoenix",
+                    Author = "J.K. Rowling",
+                    CoverImageUri = "https://upload.wikimedia.org/wikipedia/en/e/e7/Harry_Potter_and_the_Order_of_the_Phoenix_poster.jpg",
+                    Price = 10M
+            });
+        }
         public int AddBook(Book book)
         {
             var currentBookId = Interlocked.Increment(ref BookId);
