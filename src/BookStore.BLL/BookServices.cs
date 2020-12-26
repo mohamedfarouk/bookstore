@@ -26,7 +26,8 @@ namespace BookStore.BLL
 
         public Book GetBookById(int bookId)
         {
-            throw new System.NotImplementedException();
+            var book = BookRepository.GetBookById(bookId);
+            return book;
         }
 
         public int UpdateBook(int bookId, Book book)

@@ -26,7 +26,7 @@ namespace BookStore.Api.Controllers
         }
 
         [Route("book")]
-        [HttpPut]
+        [HttpPost]
         public IActionResult AddBook([FromServices] IBookServices bookServices, Book book)
         {
             var bookId = bookServices.AddBook(book);
@@ -37,7 +37,7 @@ namespace BookStore.Api.Controllers
         }
 
         [Route("book/{bookId}")]
-        [HttpPost]
+        [HttpPut]
         public IActionResult UpdateBook([FromServices] IBookServices bookServices, [FromRoute] int bookId, Book book)
         {
             var updateCount = bookServices.UpdateBook(bookId, book);
