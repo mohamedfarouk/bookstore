@@ -18,7 +18,7 @@ namespace BookStore.Domain.Models
         public string CoverImageUri { get; set; }
 
         [Required]
-        [Range(0, 1000)]
+        [Range(Double.Epsilon, 1000)]
         public decimal Price { get; set; }
 
     }
