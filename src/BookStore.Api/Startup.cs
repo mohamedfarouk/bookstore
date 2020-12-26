@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using BookStore.Domain;
 using BookStore.BLL;
+using BookStore.DAL.Definitions;
+using BookStore.DAL;
 
 namespace BookStore.Api
 {
@@ -28,6 +30,7 @@ namespace BookStore.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IBookServices, BookServices>();
+            services.AddScoped<IBookRepository, BookRepository>();
             services.AddControllers();
         }
 
