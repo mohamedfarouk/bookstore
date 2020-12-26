@@ -16,17 +16,21 @@ namespace BookStore.Api.Controllers
 
         [Route("book/{bookId}")]
         [HttpGet]
-        public Book GetBookById([FromServices] IBookServices bookServices, [FromRoute] int bookId)
+        public IActionResult GetBookById([FromServices] IBookServices bookServices, [FromRoute] int bookId)
         {
-            return bookServices.GetBookById(bookId);
+            var book = bookServices.GetBookById(bookId);
+            if(book == null)
+                return NotFound();
+
+            return new JsonResult(book);
         }
 
         [Route("book")]
         [HttpPut]
         public IActionResult AddBook([FromServices] IBookServices bookServices, Book book)
         {
-            var success = bookServices.AddBook(book);
-            if(success)
+            var bookId = bookServices.AddBook(book);
+            if(bookId > 0)
                 return Created($"/api/books/book/{book.ID}", book);
             else
                 return NotFound();
@@ -36,8 +40,8 @@ namespace BookStore.Api.Controllers
         [HttpPost]
         public IActionResult UpdateBook([FromServices] IBookServices bookServices, [FromRoute] int bookId, Book book)
         {
-            var success = bookServices.UpdateBook(bookId, book);
-            if(success)
+            var updateCount = bookServices.UpdateBook(bookId, book);
+            if(updateCount > 0)
                 return Ok();
             else
                 return NotFound();
@@ -47,8 +51,8 @@ namespace BookStore.Api.Controllers
         [HttpDelete]
         public IActionResult DeleteBook([FromServices] IBookServices bookServices, [FromRoute] int bookId)
         {
-            var success = bookServices.DeleteBook(bookId);
-            if(success)
+            var deleteCount = bookServices.DeleteBook(bookId);
+            if(deleteCount > 0)
                 return Ok();
             else
                 return NotFound();

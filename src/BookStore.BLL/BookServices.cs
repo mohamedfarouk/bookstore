@@ -1,18 +1,27 @@
 using BookStore.Domain;
 using BookStore.Domain.Models;
+using BookStore.DAL.Definitions;
 
 namespace BookStore.BLL
 {
     public class BookServices : IBookServices
     {
-        public bool AddBook(Book book)
+        IBookRepository BookRepository;
+        public BookServices(IBookRepository bookRepository)
         {
-            throw new System.NotImplementedException();
+            BookRepository = bookRepository;
         }
 
-        public bool DeleteBook(int bookId)
+        public int AddBook(Book book)
         {
-            throw new System.NotImplementedException();
+            var bookId = BookRepository.AddBook(book);
+            return bookId;
+        }
+
+        public int DeleteBook(int bookId)
+        {
+            var deleteCount = BookRepository.DeleteBook(bookId);
+            return deleteCount;
         }
 
         public Book GetBookById(int bookId)
@@ -20,9 +29,11 @@ namespace BookStore.BLL
             throw new System.NotImplementedException();
         }
 
-        public bool UpdateBook(int bookId, Book book)
+        public int UpdateBook(int bookId, Book book)
         {
-            throw new System.NotImplementedException();
+            book.ID = bookId;
+             var updateCount = BookRepository.UpdateBook(book);
+            return updateCount;
         }
     }
 }
