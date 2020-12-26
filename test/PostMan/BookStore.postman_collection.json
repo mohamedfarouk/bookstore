@@ -109,6 +109,26 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get All Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/books",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

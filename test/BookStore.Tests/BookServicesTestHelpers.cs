@@ -15,6 +15,8 @@ namespace BookStore.Tests.Helpers
         public int DeleteBook(int bookId) => 0;
 
         public Book GetBookById(int bookId) => null;
+
+        public IEnumerable<Book> GetBooks() => new Book[] { };
     }
 
 }

@@ -13,6 +13,14 @@ namespace BookStore.Api.Controllers
     [Route("api/books")]
     public class BooksController : ControllerBase
     {
+        [Route("")]
+        [HttpGet]
+        public IActionResult GetBookById([FromServices] IBookServices bookServices)
+        {
+            var books = bookServices.GetBooks();
+            return new JsonResult(books);
+        }
+
 
         [Route("book/{bookId}")]
         [HttpGet]

@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using System.Threading;
 using System.Collections.Generic;
 using BookStore.Domain.Models;
@@ -13,7 +13,7 @@ namespace BookStore.DAL
 
         static BookRepository()
         {
-            var currentBookId = BookId++;
+            var currentBookId = ++BookId;
             Books.Add(currentBookId, new Book {
                     ID = currentBookId,
                     Title = "Harry Potter And the Chamber of Secrets",
@@ -23,7 +23,7 @@ namespace BookStore.DAL
                     Price = 10M
             });
 
-            currentBookId = BookId++;
+            currentBookId = ++BookId;
             Books.Add(currentBookId, new Book {
                     ID = currentBookId,
                     Title = "Harry Potter and The Order of The Phoenix",
@@ -57,6 +57,11 @@ namespace BookStore.DAL
 
             Books.Remove(bookId);
             return 1;
+        }
+
+        public IEnumerable<Book> GetBooks()
+        {
+            return Books.Values.AsEnumerable();
         }
 
         public Book GetBookById(int bookId)

@@ -1,6 +1,7 @@
 using BookStore.Domain;
 using BookStore.Domain.Models;
 using BookStore.DAL.Definitions;
+using System.Collections.Generic;
 
 namespace BookStore.BLL
 {
@@ -28,6 +29,11 @@ namespace BookStore.BLL
         {
             var book = BookRepository.GetBookById(bookId);
             return book;
+        }
+
+        public IEnumerable<Book> GetBooks()
+        {
+            return BookRepository.GetBooks();
         }
 
         public int UpdateBook(int bookId, Book book)
