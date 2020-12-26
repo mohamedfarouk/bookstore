@@ -1,4 +1,4 @@
-namespace BookStore.BLL.Definitions.Models
+namespace BookStore.Domain.Models
 {
     public class Book
     {

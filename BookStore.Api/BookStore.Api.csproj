@@ -3,8 +3,8 @@
   <ItemGroup>
     <ProjectReference Include="..\BookStore.DAL\BookStore.DAL.csproj" />
     <ProjectReference Include="..\BookStore.DAL.Definitions\BookStore.DAL.Definitions.csproj" />
-    <ProjectReference Include="..\BookStore.BLL.Definitions\BookStore.BLL.Definitions.csproj" />
     <ProjectReference Include="..\BookStore.BLL\BookStore.BLL.csproj" />
+    <ProjectReference Include="..\BookStore.Domain\BookStore.Domain.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
