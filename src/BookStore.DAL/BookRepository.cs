@@ -21,17 +21,28 @@ namespace BookStore.DAL
 
         public int UpdateBook(Book book)
         {
-            throw new System.NotImplementedException();
+            if(!Books.ContainsKey(book.ID))
+                return 0;
+
+            Books[book.ID] = book;
+            return 1;
         }
 
         public int DeleteBook(int bookId)
         {
-            throw new System.NotImplementedException();
+            if(!Books.ContainsKey(bookId))
+                return 0;
+
+            Books.Remove(bookId);
+            return 1;
         }
 
         public Book GetBookById(int bookId)
         {
-            throw new System.NotImplementedException();
+            if(!Books.ContainsKey(bookId))
+                return null;
+
+            return Books[bookId];
         }
     }
 }
